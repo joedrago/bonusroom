@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link href="font-awesome/css/all.min.css" rel="stylesheet">
+  <style>
+    .label foreignObject {
+        overflow: visible;
+    }
+  </style>
+</head>
+<body>
+  <div class="mermaid">
+
+
+graph LR
+
+subgraph Matrix
+    WIIU
+    KIDPS4
+    PS3
+    X360
+    M
+end
+
+subgraph Left
+    CC1
+    S1
+    NX1
+end
+
+subgraph Middle
+    DADPS4
+    SB
+    NX2
+    PC
+end
+
+subgraph Right
+    S3
+    STEAM3
+    NX3
+end
+
+subgraph Rear
+    NX4
+end
+
+subgraph TV
+    TV1
+    TV2
+    TV3
+    TV4
+end
+
+WIIU --> |1| M
+KIDPS4 --> |2| M
+PS3 --> |3| M
+X360 --> |4| M
+
+NX1 --> |Input2| S1
+S1 --> |HDMI1| TV1
+
+PC -->|HDMI4| TV2
+SB -->|HDMI3| TV2
+DADPS4 -->|HDMI2| TV2
+
+
+STEAM3 --> |Input3| S3
+NX3 --> |Input2| S3
+S3 --> |HDMI1| TV3
+
+NX4 -->|SWITCH| TV4
+
+NX2 -->|HDMI1| SB
+
+CC1 --> |HDMI2| TV1
+
+M -.->|A -> Input1| S1
+M -.->|C -> Input1| S3
+M -.->|D -> GAMES| TV4
+M -.->|B -> HDMI1| TV2 %% put at the end to make the graph pretty
+
+%% Names
+CC1>Chromecast: Downstairs Left fa:fa-play]
+DADPS4(Dad's PS4 Pro fa:fa-gamepad)
+KIDPS4(Kid's PS4 Pro fa:fa-gamepad)
+M[4x4 Matrix]
+NX1(Nintendo Switch: Left fa:fa-gamepad)
+NX2(Nintendo Switch: Middle fa:fa-gamepad)
+NX3(Nintendo Switch: Right fa:fa-gamepad)
+NX4(Nintendo Switch: Rear fa:fa-gamepad)
+PC{{"PC (Monza) fa:fa-desktop"}}
+PS3(PS3 fa:fa-gamepad)
+S1[Left TV Switcher]
+S3[Right TV Switcher]
+SB[Sound Bar]
+STEAM3(Steam Link fa:fa-gamepad)
+TV1[/Left fa:fa-tv\]
+TV2[/Middle fa:fa-tv\]
+TV3[/Right fa:fa-tv\]
+TV4[/Rear fa:fa-tv\]
+WIIU(WiiU fa:fa-gamepad)
+X360(XBox 360 fa:fa-gamepad)
+
+%% Styling
+classDef classTV fill:#aff,stroke:#333,stroke-width:2px;
+class TV1,TV2,TV3,TV4 classTV;
+
+classDef classGames fill:#fc8,stroke:#333,stroke-width:2px;
+class DADPS4,KIDPS4,NX1,NX2,NX3,NX4,PS3,STEAM3,WIIU,X360 classGames;
+
+classDef classMedia fill:#fcc,stroke:#333,stroke-width:2px;
+class CC1,PC classMedia;
+
+classDef classInt fill:#ddd,stroke:#333,color:#000,stroke-width:1px;
+class M,SB,S1,S3 classInt;
+
+  </div>
+  <script src="mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true,theme:'default'});</script>
+</body>
+</html>
